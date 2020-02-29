@@ -1,0 +1,276 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Cards/Border.png" type="Texture" id=1]
+[ext_resource path="res://Cards/attackCardTemplate.png" type="Texture" id=2]
+[ext_resource path="res://Cards/warrior/Batter.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/Montserrat-Regular.res" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/Montserrat-Regular-Cost.res" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/Montserrat-Regular-Type.res" type="DynamicFont" id=6]
+[ext_resource path="res://Fonts/Montserrat-Regular-Name.res" type="DynamicFont" id=7]
+[ext_resource path="res://InputHandler.gd" type="Script" id=8]
+[ext_resource path="res://Fonts/Montserrat-Regular-Desc.res" type="DynamicFont" id=9]
+[ext_resource path="res://Fonts/Montserrat-Regular-Desc-Bold.res" type="DynamicFont" id=10]
+[ext_resource path="res://Fonts/Montserrat-Regular-Desc-Italic.res" type="DynamicFont" id=11]
+[ext_resource path="res://Fonts/Montserrat-Regular-Desc-Bold-Italic.res" type="DynamicFont" id=12]
+
+[node name="Root" type="ViewportContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 944, 740 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="Viewport"]
+margin_right = 496.0
+margin_bottom = 708.0
+rect_min_size = Vector2( 448, 708 )
+custom_constants/hseparation = 480
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Viewport/GridContainer"]
+margin_right = 16.0
+margin_bottom = 16.0
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+
+[node name="Left" type="Control" parent="Viewport/GridContainer/MarginContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 16.0
+
+[node name="Background" type="Sprite" parent="Viewport/GridContainer/MarginContainer/Left"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Cost" type="Label" parent="Viewport/GridContainer/MarginContainer/Left"]
+margin_top = -12.0
+margin_right = 448.0
+margin_bottom = 73.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Viewport/GridContainer/MarginContainer/Left"]
+margin_top = 80.0
+margin_right = 448.0
+margin_bottom = 139.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 7 )
+text = "Bulk Up"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" type="Label" parent="Viewport/GridContainer/MarginContainer/Left"]
+margin_top = 136.0
+margin_right = 448.0
+margin_bottom = 195.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 0.705882 )
+text = "PASSIVE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="Viewport/GridContainer/MarginContainer/Left"]
+position = Vector2( 224, 352 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="Desc" type="RichTextLabel" parent="Viewport/GridContainer/MarginContainer/Left"]
+margin_left = 32.0
+margin_top = 536.0
+margin_right = 416.0
+margin_bottom = 676.0
+custom_fonts/mono_font = ExtResource( 9 )
+custom_fonts/bold_italics_font = ExtResource( 12 )
+custom_fonts/italics_font = ExtResource( 11 )
+custom_fonts/bold_font = ExtResource( 10 )
+custom_fonts/normal_font = ExtResource( 9 )
+bbcode_enabled = true
+bbcode_text = "This is a [color=red]Description[/color]."
+text = "This is a Description."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overlay" type="Sprite" parent="Viewport/GridContainer/MarginContainer/Left"]
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 16, 46 )
+
+[node name="Right" type="Control" parent="Viewport/GridContainer"]
+margin_left = 496.0
+margin_right = 496.0
+margin_bottom = 16.0
+
+[node name="Panel" type="Panel" parent="Viewport/GridContainer/Right"]
+margin_right = 448.0
+margin_bottom = 740.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Viewport/GridContainer/Right/Panel"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 426.0
+margin_bottom = 436.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 40
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardCost" type="Label" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_top = 12.0
+margin_right = 146.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 4 )
+text = "Cost"
+
+[node name="CostInput" type="SpinBox" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_left = 186.0
+margin_right = 410.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 224, 48 )
+max_value = 99.0
+rounded = true
+
+[node name="CardName" type="Label" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_top = 80.0
+margin_right = 146.0
+margin_bottom = 103.0
+custom_fonts/font = ExtResource( 4 )
+text = "Name"
+
+[node name="NameInput" type="LineEdit" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_left = 186.0
+margin_top = 68.0
+margin_right = 410.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 0, 48 )
+text = "Bulk Up"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+caret_blink = true
+
+[node name="CardType" type="Label" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_top = 140.0
+margin_right = 146.0
+margin_bottom = 163.0
+custom_fonts/font = ExtResource( 4 )
+text = "Type"
+
+[node name="TypeInput" type="OptionButton" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_left = 186.0
+margin_top = 136.0
+margin_right = 410.0
+margin_bottom = 168.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="CardDeck" type="Label" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_top = 192.0
+margin_right = 146.0
+margin_bottom = 215.0
+custom_fonts/font = ExtResource( 4 )
+text = "Deck"
+
+[node name="DeckInput" type="OptionButton" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_left = 186.0
+margin_top = 188.0
+margin_right = 410.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="CardIcon" type="Label" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_top = 244.0
+margin_right = 146.0
+margin_bottom = 267.0
+custom_fonts/font = ExtResource( 4 )
+text = "Icon"
+
+[node name="IconInput" type="OptionButton" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_left = 186.0
+margin_top = 240.0
+margin_right = 410.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="CardDesc" type="Label" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_top = 344.0
+margin_right = 146.0
+margin_bottom = 367.0
+custom_fonts/font = ExtResource( 4 )
+text = "Description"
+
+[node name="DescInput" type="TextEdit" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_left = 186.0
+margin_top = 292.0
+margin_right = 410.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 0, 128 )
+text = "This is a [color=red]Description[/color]."
+context_menu_enabled = false
+wrap_enabled = true
+
+[node name="CardBrdr" type="Label" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_top = 440.0
+margin_right = 146.0
+margin_bottom = 463.0
+custom_fonts/font = ExtResource( 4 )
+text = "Border color"
+
+[node name="ColrInput" type="ColorPickerButton" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_left = 186.0
+margin_top = 440.0
+margin_right = 410.0
+margin_bottom = 463.0
+shortcut_in_tooltip = false
+color = Color( 1, 1, 1, 1 )
+
+[node name="CardExport" type="Label" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_top = 487.0
+margin_right = 146.0
+margin_bottom = 510.0
+custom_fonts/font = ExtResource( 4 )
+text = "Export as Image"
+
+[node name="Export" type="Button" parent="Viewport/GridContainer/Right/Panel/GridContainer"]
+margin_left = 186.0
+margin_top = 483.0
+margin_right = 410.0
+margin_bottom = 515.0
+rect_min_size = Vector2( 0, 32 )
+custom_fonts/font = ExtResource( 4 )
+text = "Export"
+[connection signal="value_changed" from="Viewport/GridContainer/Right/Panel/GridContainer/CostInput" to="." method="_on_CostInput_value_changed"]
+[connection signal="text_changed" from="Viewport/GridContainer/Right/Panel/GridContainer/NameInput" to="." method="_on_NameInput_text_changed"]
+[connection signal="item_selected" from="Viewport/GridContainer/Right/Panel/GridContainer/TypeInput" to="." method="_on_TypeInput_item_selected"]
+[connection signal="item_selected" from="Viewport/GridContainer/Right/Panel/GridContainer/DeckInput" to="." method="_on_DeckInput_item_selected"]
+[connection signal="item_selected" from="Viewport/GridContainer/Right/Panel/GridContainer/IconInput" to="." method="_on_IconInput_item_selected"]
+[connection signal="text_changed" from="Viewport/GridContainer/Right/Panel/GridContainer/DescInput" to="." method="_on_DescInput_text_changed"]
+[connection signal="color_changed" from="Viewport/GridContainer/Right/Panel/GridContainer/ColrInput" to="." method="_on_ColorPicker_color_changed"]
+[connection signal="picker_created" from="Viewport/GridContainer/Right/Panel/GridContainer/ColrInput" to="." method="_on_ColrInput_picker_created"]
+[connection signal="pressed" from="Viewport/GridContainer/Right/Panel/GridContainer/Export" to="." method="_on_Export_pressed"]
