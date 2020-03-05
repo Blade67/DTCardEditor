@@ -7,6 +7,8 @@ onready var CardDeck = $Viewport/GridContainer/Right/Panel/GridContainer/DeckInp
 onready var CardIcon = $Viewport/GridContainer/Right/Panel/GridContainer/IconInput
 onready var CardDesc = $Viewport/GridContainer/Right/Panel/GridContainer/DescInput
 onready var CardBrdr = $Viewport/GridContainer/Right/Panel/GridContainer/ColrInput
+onready var CardBgrd = $Viewport/GridContainer/Right/Panel/GridContainer/BgrdInput
+onready var CardCcol = $Viewport/GridContainer/Right/Panel/GridContainer/CcolInput
 
 onready var Cost = $Viewport/GridContainer/MarginContainer/Left/Cost
 onready var Name = $Viewport/GridContainer/MarginContainer/Left/Name
@@ -17,6 +19,7 @@ onready var Desc = $Viewport/GridContainer/MarginContainer/Left/Desc
 
 onready var Background = $Viewport/GridContainer/MarginContainer/Left/Background
 onready var Overlay = $Viewport/GridContainer/MarginContainer/Left/Overlay
+onready var CostOverlay = $Viewport/GridContainer/MarginContainer/Left/CostOverlay
 onready var _viewport = $Viewport
 
 func _ready() -> void:
@@ -26,6 +29,7 @@ func _ready() -> void:
     CardType.add_item("PASSIVE", 1)
     CardType.add_item("ABILITY", 2)
     CardType.add_item("HANDICAP", 3)
+    CardType.add_item("DEVELOPER", 4)
     
     # Deck
     CardDeck.add_item("Warrior", 0)
@@ -228,4 +232,24 @@ func _on_ColorPicker_color_changed(color: Color) -> void:
 
 
 func _on_ColrInput_picker_created() -> void:
-    $Viewport/GridContainer/Right/Panel/GridContainer/ColrInput.get_child(0).get_child(0).get_child(1).get_child(1).queue_free()
+    CardBrdr.get_child(0).get_child(0).get_child(1).get_child(1).queue_free()
+
+
+func _on_BgrdInput_color_changed(color: Color) -> void:
+    Background.modulate = color
+
+
+func _on_BgrdInput_picker_created() -> void:
+    CardBgrd.get_child(0).get_child(0).get_child(1).get_child(1).queue_free()
+
+
+func _on_CcolInput_color_changed(color: Color) -> void:
+    Cost.add_color_override("font_color", color)
+
+
+func _on_CcolInput_picker_created() -> void:
+    CardCcol.get_child(0).get_child(0).get_child(1).get_child(1).queue_free()
+
+
+func _on_OverInput_toggled(button_pressed: bool) -> void:
+    CostOverlay.visible = button_pressed
