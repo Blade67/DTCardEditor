@@ -64,8 +64,8 @@ func _on_TypeInput_item_selected(id: int) -> void:
     setIconType(id)
 
 func setIconType(id: int) -> void:
-    print("res://Cards/" + CardType.get_item_text(id) + "CardTemplate.png")
-    Background.texture = load("res://Cards/" + CardType.get_item_text(id) + "CardTemplate.png")
+    print("res://Cards/" + CardType.get_item_text(id).to_lower() + "CardTemplate.png")
+    Background.texture = load("res://Cards/" + CardType.get_item_text(id).to_lower() + "CardTemplate.png")
 
 
 func _on_DescInput_text_changed() -> void:
